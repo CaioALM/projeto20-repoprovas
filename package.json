@@ -1,0 +1,25 @@
+{
+  "name": "projeto20-repoprovas",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CaioALM/projeto20-repoprovas.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CaioALM/projeto20-repoprovas/issues"
+  },
+  "homepage": "https://github.com/CaioALM/projeto20-repoprovas#readme",
+  "dependencies": {
+    "chalk": "^5.0.1",
+    "cors": "^2.8.5",
+    "express": "^4.18.1"
+  }
+}
