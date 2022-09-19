@@ -1,9 +1,9 @@
-import { faker } from '@faker-js/faker';
+import { faker } from '@faker-js/faker'
 
-export async function createUser () {
-    const user = {
+export default async function createUser () {
+    return {
       email: faker.internet.email(),
-      password: faker.internet.password(10),
+      password: faker.internet.password(10)
     };
 
 

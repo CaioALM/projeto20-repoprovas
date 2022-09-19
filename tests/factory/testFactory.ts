@@ -1,9 +1,12 @@
+import { faker } from '@faker-js/faker'
+
 export async function createUser () {
-    const user = {
-      email: "test@email.com",
-      password: "1234567891",
-      confirmation: "1234567891"
-    };
+    return {
+      title: faker.lorem.word(2),
+      pdfUrl:faker.internet.url(),
+      categoryId:1,
+      teachersDisciplineId: 1
+  };
 
 
 }
