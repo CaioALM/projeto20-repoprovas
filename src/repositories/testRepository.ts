@@ -1,4 +1,5 @@
 import  { prisma }  from "../config/database.js";
+import { TestInsert } from '../types/testTypes.js'
 
 export async function findCategoryById(categoryId:number) {
   return prisma.categories.findUnique({
@@ -12,19 +13,31 @@ export async function findTeacherDisciplineById(teacherDisciplineId:number){
     });
 }
 
-export async function insertTest(name: string, pdfUrl: string, categoryId: number, teachersDisciplineId: number){
+export async function insertTest(data: TestInsert){
     return prisma.tests.create({
         data: { 
-            name: name,
-            pdfUrl: pdfUrl,
-            categoryId: categoryId,
-            teachersDisciplineId : teachersDisciplineId
+            name: data.name,
+            pdfUrl: data.pdfUrl,
+            categoryId: data.categoryId,
+            teachersDisciplineId : data.teachersDisciplineId
          }
     });
 }
 
-export async function getAllTestsByDisciplines(){
-  const result = await prisma.terms.findMany({
+export async function getAllTests(groupBy) {
+
+    if(groupBy==='disciplines'){        
+        
+       return getAllTestsByDisciplines()
+    }else{
+
+        return getAllTestsByTeacher()
+    } 
+
+}
+
+function getAllTestsByDisciplines(){
+  const result = prisma.terms.findMany({
     where :{},
      include:{
          disciplines:{
@@ -52,11 +65,11 @@ export async function getAllTestsByDisciplines(){
      }
      
  })
-
+return result
 
 }
 
-export async function getAllTestsByTeacher(){
+function getAllTestsByTeacher(){
   return prisma.teachersDisciplines.findMany({
       where:{},
       select:{

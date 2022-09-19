@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import * as testController from '../controllers/testController.js';
-import testSchema from '../schemas/registerSchema.js';
+import testSchema from '../schemas/testSchema.js';
 import { validateSchemaMiddleware } from '../middlewares/validateSchemaMiddleware.js';
 import { validateToken } from '../middlewares/validateToken.js'
 
