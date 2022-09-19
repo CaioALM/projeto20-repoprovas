@@ -7,11 +7,13 @@ export async function createTest(req: Request, res: Response) {
     res.sendStatus(201);
 }
 
-export async function signIn(req: Request, res: Response) {
-    const { email, password } = req.body;
+export async function getAllTests(req: Request, res: Response) {
+    // const  groupBy  = toString(req.query)
+    // console.log("---------------------------------------", groupBy);
+    // const test = typeof(groupBy)
+    // console.log("------------------------------------------", test)
+    // const tests = await testService.getAllTests(groupBy);
 
-    const token = await authService.signIn(email, password);
 
-
-    res.status(200).send({token});
+    res.status(200)
 }

@@ -1,10 +1,11 @@
-import express, { json } from 'express';
-import chalk from 'chalk'
+import express, { json } from "express";
+import "express-async-errors";
+
 import cors from 'cors'
 import dotenv from 'dotenv'
 import router from './routes/index.js'
-import 'express-async-errors'
-import errorHandler from './middlewares/errorHandler.js'
+import errorHandler  from './middlewares/errorHandler.js'
+
 
 dotenv.config()
 

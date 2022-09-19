@@ -22,3 +22,65 @@ export async function insertTest(name: string, pdfUrl: string, categoryId: numbe
          }
     });
 }
+
+export async function getAllTestsByDisciplines(){
+  const result = await prisma.terms.findMany({
+    where :{},
+     include:{
+         disciplines:{
+             select:{
+                 id:true,
+                 name:true,
+                 teachersDiscipline:{
+                     select:{
+                         id:true,
+                         disciplines:{},
+                         teachers:{},
+                         tests:{
+                             select:{
+                                 id:true,
+                                 name:true,
+                                 pdfUrl:true,
+                                 categories:{}
+                             }
+                         }
+                     }
+                 },
+                 terms:{}
+             }
+         }
+     }
+     
+ })
+
+
+}
+
+export async function getAllTestsByTeacher(){
+  return prisma.teachersDisciplines.findMany({
+      where:{},
+      select:{
+          id:true,
+          disciplines:{
+              select:{
+                  id:true,
+                  name:true,
+                  teachersDiscipline:{},
+                  terms:{}
+              }
+          },
+          tests:{
+              select:{
+                  id:true,
+                  name:true,
+                  pdfUrl:true,
+                  categories:{}
+              }
+          },
+          teachers:{},
+          
+          
+      }
+  })
+}
+

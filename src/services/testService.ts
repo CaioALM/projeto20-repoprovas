@@ -6,10 +6,31 @@ export async function createTest(name: string, pdfUrl: string, categoryId: numbe
     const teacherDiscipline = await testRepository.findTeacherDisciplineById(teachersDisciplineId)
 
     if (!category) {
-        throw { code: "NotFound", message: "Category not found"}
+        throw { type: "NotFound", message: "Category not found"}
     }
     if (!teacherDiscipline) {
-        throw { code: "NotFound", message: "teacherDiscipline not found"}
+        throw { type: "NotFound", message: "teacherDiscipline not found"}
     }
     await testRepository.insertTest(name, pdfUrl, categoryId, teachersDisciplineId)
 }
+
+
+export async function getAllTests(groupBy: string){  
+    if (!groupBy){
+        throw { type: "NotFound", message: "You must send groupBy type"};
+    } 
+    if (groupBy!=="disciplines" && groupBy!== "teachers"){
+        throw { type: "NotFound", message: "You must send groupBy discipliner or teachers"};
+    } 
+    if(groupBy  ===  "disciplines" ){
+        const data = await testRepository.getAllTestsByDisciplines() 
+    
+        return data  
+    } else {
+        const data = await testRepository.getAllTestsByTeacher() 
+
+        return data  
+    }
+   
+ }
+ 

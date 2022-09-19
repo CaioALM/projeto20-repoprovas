@@ -31,7 +31,7 @@ model Teachers{
   id Int @id @default(autoincrement())
   name String
 
-  teacherDiscipline TeachersDisciplines []
+  teachersDiscipline TeachersDisciplines []
 
  @@map("teachers")
 }
@@ -50,7 +50,7 @@ model Disciplines{
   name String
   termId Int
 
-  teacherDiscipline TeachersDisciplines []
+  teachersDiscipline TeachersDisciplines []
   
   terms Terms @relation(fields: [termId], references: [id])
   @@map("disciplines")
@@ -77,7 +77,7 @@ model Tests{
   categoryId Int
   teachersDisciplineId Int
   categories Categories @relation(fields: [categoryId], references: [id])
-  teacherDiscipline TeachersDisciplines @relation(fields: [teachersDisciplineId], references: [id])
+  teachersDiscipline TeachersDisciplines @relation(fields: [teachersDisciplineId], references: [id])
   
   @@map("tests")
 }
