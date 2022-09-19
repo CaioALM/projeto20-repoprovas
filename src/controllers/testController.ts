@@ -10,7 +10,7 @@ export async function createTest(req: Request, res: Response) {
 }
 
 export async function getAllTests(req: Request, res: Response) {
-    const {groupBy} = req.query
+    const groupBy: string = `${req.query.groupBy}`
     const tests = await testService.getAllTests(groupBy);
 
 

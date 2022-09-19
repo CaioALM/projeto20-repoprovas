@@ -24,7 +24,7 @@ export async function insertTest(data: TestInsert){
     });
 }
 
-export async function getAllTests(groupBy) {
+export async function getAllTests(groupBy: string) {
 
     if(groupBy==='disciplines'){        
         

@@ -9,7 +9,7 @@ export async function signUp(email: string, password: string, confirmation: stri
     const user = await authRepository.getUserByEmail(email);
 
     if (user) {
-        throw { type: "Conflict", message: "Email already registered"}
+        throw { type: "conflict", message: "Email already registered"}
     }
 
     await authRepository.createNewUser(email, passwordHash);
